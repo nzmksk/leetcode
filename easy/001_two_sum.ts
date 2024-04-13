@@ -5,13 +5,11 @@ function twoSum(nums: number[], target: number): number[] | undefined {
     let complementNumber = target - nums[indexA];
 
     if (cache.has(complementNumber)) {
-      let indexB = cache.get(complementNumber);
+      let indexB = cache.get(complementNumber) as number;
 
-      if (indexB !== undefined) {
-        return [indexA, indexB];
-      }
+      return [indexA, indexB];
+    } else {
+      cache.set(nums[indexA], indexA);
     }
-
-    cache.set(nums[indexA], indexA);
   }
 }
